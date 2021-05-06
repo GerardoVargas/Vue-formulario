@@ -3,7 +3,7 @@
     <Button 
       color='white'
       background='darkslateblue'
-      isDisabled='true'
+      :disabled="valid"
     />
   </div>
 </template>
@@ -15,6 +15,11 @@ export default {
   name: 'App',
   components: {
     Button
+  },
+  data(){
+    return {
+      valid: false
+    }
   }
 }
 </script>

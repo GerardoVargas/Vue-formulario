@@ -8,6 +8,7 @@
 <template>
   <button 
     :style="{ background, color }"
+    :disabled="disabled"
   >
     Prueba
   </button>
@@ -44,5 +45,10 @@ export default {
 
   button:hover {
     filter: brightness(125%);
+  }
+
+  button:disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
   }
  </style>
