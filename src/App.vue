@@ -1,6 +1,13 @@
 <template>
   <div id="app">
-    <Input name='Usuario' />
+    <Input 
+      name='Usuario' 
+      :rules="{ required: true, min: 5 }"
+    />
+    <Input 
+      name='Password' 
+      :rules="{ required: true, min: 10 }"
+    />
     <Button 
       color='white'
       background='darkslateblue'
