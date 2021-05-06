@@ -5,7 +5,7 @@
     <div class="error">{{ error }}</div>
    </div>
 
-   <input type="text" :id="name" v-model="value">
+   <input type="text" :id="name" :value="value" @input='input'>
  </div>
 </template>
 
@@ -19,11 +19,9 @@ export default {
     },
     rules: {
       type: Object
-    }
-  },
-  data(){
-    return {
-      value: ''
+    },
+    value:{
+      type: String
     }
   },
   computed:{
@@ -35,6 +33,14 @@ export default {
         return `Debe ingresar un mínimo de ${this.rules.min} caracteres`
       }
       return ''
+    }
+  },
+  methods:{
+    input($evt){
+      this.$emit('update', {
+        value: $evt.target.value,
+        name: this.name
+      });
     }
   }
 }

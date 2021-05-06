@@ -25,7 +25,7 @@ export default {
     background: {
       type: String
     },
-    isDisabled: {
+    disabled: {
       type: Boolean
     }
   }
