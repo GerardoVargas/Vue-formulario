@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Input name='Usuario' />
     <Button 
       color='white'
       background='darkslateblue'
@@ -10,11 +11,13 @@
 
 <script>
 import Button from './components/Button.vue'
+import Input from './components/Input.vue'
 
 export default {
   name: 'App',
   components: {
-    Button
+    Button,
+    Input
   },
   data(){
     return {
@@ -25,5 +28,7 @@ export default {
 </script>
 
 <style>
-
+  body {
+    font-family: Arial;
+  }
 </style>
