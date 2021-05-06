@@ -6,18 +6,16 @@
       :value="usuario.value"
       @update="update"
     />
-    {{ usuario }}
     <Input 
       name='Password' 
       :rules="{ required: true, min: 10 }"
       :value="password.value"
       @update="update"
     />
-    {{ password }}
     <Button 
       color='white'
       background='darkslateblue'
-      :disabled="valid"
+      :disabled="!valid"
     />
   </div>
 </template>
@@ -34,7 +32,6 @@ export default {
   },
   data(){
     return {
-      valid: false,
       usuario: {
         value: 'user',
         valid: false
@@ -47,7 +44,15 @@ export default {
   },
   methods: {
     update(payload){
-      this[payload.name.toLowerCase()].value = payload.value
+      this[payload.name.toLowerCase()] = {
+        value: payload.value,
+        valid: payload.valid
+      }
+    }
+  },
+  computed: {
+    valid(){
+      return this.usuario.valid && this.password.valid
     }
   }
 }

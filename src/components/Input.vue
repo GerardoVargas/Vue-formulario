@@ -26,21 +26,25 @@ export default {
   },
   computed:{
     error(){
-      if(this.rules.required && !this.value){
-        return 'Requerido'
-      }
-      if(this.rules.min && this.value.length < this.rules.min){
-        return `Debe ingresar un mínimo de ${this.rules.min} caracteres`
-      }
-      return ''
+      return this.validar(this.value)
     }
   },
   methods:{
     input($evt){
       this.$emit('update', {
         value: $evt.target.value,
-        name: this.name
+        name: this.name,
+        valid: this.validar($evt.target.value) ? false : true
       });
+    },
+    validar(value){
+      if(this.rules.required && !value){
+        return 'Requerido'
+      }
+      if(this.rules.min && value.length < this.rules.min){
+        return `Debe ingresar un mínimo de ${this.rules.min} caracteres`
+      }
+      return ''
     }
   }
 }
