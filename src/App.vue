@@ -1,22 +1,26 @@
 <template>
   <div id="app">
-    <Input 
-      name='Usuario' 
-      :rules="{ required: true, min: 5 }"
-      :value="usuario.value"
-      @update="update"
-    />
-    <Input 
-      name='Password' 
-      :rules="{ required: true, min: 10 }"
-      :value="password.value"
-      @update="update"
-    />
-    <Button 
-      color='white'
-      background='darkslateblue'
-      :disabled="!valid"
-    />
+    <form class="form" @submit.prevent="send">
+      <Input 
+        name='Usuario' 
+        :rules="{ required: true, min: 5 }"
+        :value="usuario.value"
+        @update="update"
+        typeInput="text"
+      />
+      <Input 
+        name='Password' 
+        :rules="{ required: true, min: 10 }"
+        :value="password.value"
+        @update="update"
+        typeInput="password"
+      />
+      <Button 
+        color='white'
+        background='darkslateblue'
+        :disabled="!valid"
+      />
+    </form>
   </div>
 </template>
 
@@ -33,7 +37,7 @@ export default {
   data(){
     return {
       usuario: {
-        value: 'user',
+        value: '',
         valid: false
       },
       password: {
@@ -48,6 +52,9 @@ export default {
         value: payload.value,
         valid: payload.valid
       }
+    },
+    send(){
+      console.log('Enviando');
     }
   },
   computed: {
@@ -61,5 +68,10 @@ export default {
 <style>
   body {
     font-family: Arial;
+  }
+
+  .form {
+    max-width: 400px;
+    width: 50%;
   }
 </style>

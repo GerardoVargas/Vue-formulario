@@ -5,7 +5,7 @@
     <div class="error">{{ error }}</div>
    </div>
 
-   <input type="text" :id="name" :value="value" @input='input'>
+   <input :type="typeInput" :id="name" :value="value" @input='input'>
  </div>
 </template>
 
@@ -22,6 +22,10 @@ export default {
     },
     value:{
       type: String
+    },
+    typeInput: {
+      type: String,
+      required: true
     }
   },
   computed:{
